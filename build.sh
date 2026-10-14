@@ -25,9 +25,12 @@ LDFLAGS="-L${LIBXML2_DIR}/.libs --static" \
 ./configure --disable-shared --enable-static
 make -j$(nproc)
 
+# every tool `django-admin makemessages` calls, plus msgfmt
 cp gettext-tools/src/xgettext \
-  gettext-tools/src/msgfmt \
+  gettext-tools/src/msguniq \
   gettext-tools/src/msgmerge \
+  gettext-tools/src/msgattrib \
+  gettext-tools/src/msgfmt \
   ../../x86_64-linux/
 
 echo "Build complete. Verify with:"
